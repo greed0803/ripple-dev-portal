@@ -8,46 +8,60 @@
 ### ***TODO: Whatever else is in the install docs***
 
 # Types of `rippled` Servers
-
 ## Stock/standard Ledger Store with or w/out history shards
-
 ## Full Ledger Store history
-
 ## Validator
 
 # Configuration Reference
-
 ## Purpose, syntax, notation
+## Server
+## Peer Protocol
+## Ripple Protocol
+## HTTPS Client
+## Database
+## Diagnostics
+## Voting
+## Example Settings
+## Types of Server Configuration
+
+# Reference Tables and Examples
+
+Each section of the configuration (Server, Peer Protocol, Ripple Protocol) should include a page section with a reasonable set of labeled examples that correlate to the reference table that fully describes each field. Any peculiarities or special notes can also be called out in the section.
+
 
 ## Server
 
-## Peer Protocol
+### Server's Port List
 
-## Ripple Protocol
+| Example                                                                                                 | Section or Sub-section                                     |
+|:--------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------|
+| ``` [server]``` <br> ```port_public``` <br>```port_private```  <br> ```port=80``` <br> ```protocol = http ```| Server's port list<br>Listening port name<br>Listening port name<br>Listening port default  |
 
-## HTTPS Client
+**Tip:** To avoid a conflict with port names and future configuration sections, we recommend prepending "port_" to the port name. This prefix is not required, but suggested.
 
-## Database
+### Port Settings List
 
-## Diagnostics
+| Example                                                                                                 | Section or Sub-section                                     |
+|:--------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------|
+| ``` [port_rpc_admin_local]``` <br> ```port = 5005``` <br>``` ip = 127.0.0.1```  <br> ```admin = 127.0.0.1``` <br> ```protocol = http ```| Port settings list<br> Port <br> IP address <br> IP address <br> Protocol |
 
-## Voting
+### Server Reference Table
 
-## Example Settings
+| Section Field      | Sub-section Field      | Required?    | Description                                                                                       | Format                                                               |
+|:-------------------|:-----------------------|:-------------|:--------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|
+| Server's port list |                        | Yes          | Named list used to identify the list of port settings list, where name identifies server          | String in square brackets                                            |
+|                    | Listening port name    | At least one | Named port                                                                                        | String, must begine with letter and contain only letters and numbers |
+|                    | Listening port default | Optional     | Pair that defines default listening port, unless the port overrides the value in its port section | `port={port number}`                                                 |
+| Port settings list |                        | Yes          | Named list of port whose settings are defined in its key/value pairs                              | String in square brackets                                            |
+|                    | Port                   | Yes          | Sets the port number for this port                                                                | `port={port number}`                                                 |
+|                    | IP address             | Yes          | Address to bind to the network inteface. Use 0.0.0.0 to bind to all available interfaces          | `ip={IP address}`                                                    |
+|                    | Protocol               | Yes          | Pair that defines supported protocol                                                              | `protocol=http,https`                                                |
 
 
+# Author's Research Notes from example-rippled.cfg file
+<!-- (JBH) -->
 
-## Minimum Requirements from Install
-
-### Hardware
-### Source
-### ***TODO: Whatever else is in the install docs***
-
-## Types of Server Configuration
-
-### Stock/standard Ledger Store with or w/out history shards
-### Full Ledger Store history
-### Validator
+**Note:** Many of the the children/sub-sectional fields were skipped during the first round of research. See [](https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg).
 
 ## Configuration
 
@@ -275,10 +289,11 @@ Server
 port_rpc_admin_local
 port_peer
 port_ws_admin_local
-#port_ws_public
+
+<!-- #port_ws_public
 #ssl_key = /etc/ssl/private/server.key
 #ssl_cert = /etc/ssl/certs/server.crt
-
+ -->
 [port_rpc_admin_local]
 port = 5005
 ip = 127.0.0.1
@@ -296,19 +311,15 @@ ip = 127.0.0.1
 admin = 127.0.0.1
 protocol = ws
 
-#[port_ws_public]
+<!-- #[port_ws_public]
 #port = 5005
 #ip = 127.0.0.1
 #protocol = wss
-
+ -->
 [node_size]
 medium
 
-# This is primary persistent datastore for rippled.  This includes transaction
-# metadata, account states, and ledger headers.  Helpful information can be
-# found here: https://ripple.com/wiki/NodeBackEnd
-# delete old ledgers while maintaining at least 2000. Do not require an
-# external administrative command to initiate deletion.
+This is primary persistent datastore for rippled.  This includes transaction metadata, account states, and ledger headers.  Helpful information can be found here: https://ripple.com/wiki/NodeBackEnd delete old ledgers while maintaining at least 2000. Do not require an external administrative command to initiate deletion.
 
 [node_db]
 type=RocksDB
