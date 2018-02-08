@@ -7,9 +7,9 @@
 **Considerations for Configuring `rippled`**
 
 - Determine your business goals
-- Types of server -- crosslink
-- Hardware requirements -- crosslink
-- Complete installation -- crosslink
+- Types of server -- crosslink to [Types of Servers](https://ripple.com/build/rippled-setup/#types-of-rippled-servers)
+- Hardware requirements -- crosslink to [Hardware Requirements](https://ripple.com/build/rippled-setup/#system-requirements) (will be updated by ticket [DOC-1262](https://ripplelabs.atlassian.net/browse/DOC-1262))
+- Complete installation -- crosslink to [Installing `rippled`](https://ripple.com/build/rippled-setup/#installing-rippled)
 
 **Configuration Recommendations**
 
@@ -32,9 +32,11 @@
 - Voting
 - Example Settings
 
+**Troubleshooting Common `rippled` Configuration Problems**
 
+***TODO: It may be worth adding this troubleshooting section. Thoughts?***
 
-
+## Example Model for Document
 ***TODO: One model for presenting the sections of the Configuration Reference Tables follows, where any peculiarities or special notes could be called out in the section description.***
 
 ```
@@ -47,27 +49,35 @@ TABLE: Configuration section reference
 
 ```
 
-***TODO: What follows below is a truncated example of how the above suggested format for Configuration Reference Tables could be applied to the documentation for Server configuration.***
 
 # Reference Tables and Examples
+***TODO: This section contains a truncated example of how the above suggested format for Configuration Reference Tables could be applied to the documentation for Server configuration.***
 
 ## Server
 
 ### Server's Port List
 
+_Description here_
+
 | Example                                                                                                 | Section or Sub-section                                     |
 |:--------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------|
 | ``` [server]``` <br> ```port_public``` <br>```port_private```  <br> ```port=80``` <br> ```protocol = http ```| Server's port list<br>Listening port name<br>Listening port name<br>Listening port default <br> Protocol |
 
-**Tip:** To avoid a conflict with port names and future configuration sections, we recommend prepending "port_" to the port name. This prefix is not required, but suggested.
+<br>
+
+**Tip:** To avoid a conflict with port names and future configuration sections, Ripple recommends prepending "port_" to the port name. This prefix is not required.
 
 ### Port Settings List
+
+_Description here_
 
 | Example                                                                                                 | Section or Sub-section                                     |
 |:--------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------|
 | ``` [port_rpc_admin_local]``` <br> ```port = 5005``` <br>``` ip = 127.0.0.1```  <br> ```admin = 127.0.0.1``` <br> ```protocol = http ```| Port settings list<br> Port <br> IP address <br> IP address <br> Protocol |
 
 ### Server Reference Table
+
+_Description here_
 
 | Section Field      | Sub-section Field      | Required?    | Description                                                                                       | Format                                                               |
 |:-------------------|:-----------------------|:-------------|:--------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|
@@ -79,9 +89,12 @@ TABLE: Configuration section reference
 |                    | IP address             | Yes          | Address to bind to the network inteface. Use 0.0.0.0 to bind to all available interfaces          | `ip={IP address}`                                                    |
 |                    | Protocol               | Yes          | Pair that defines supported protocol                                                              | `protocol=http,https`                                                |
 
+<br>
 
-# Author's Research Notes from example-rippled.cfg file
-<!-- (JBH) -->
+***TODO: There are a number of ways the table above could be formatted, and probably many that it could be improved. Any thoughts for improvement that jump out would be welcome as a comment.***
+
+<!--
+# What follows below is the Author's Research Notes from example-rippled.cfg file (JBH)
 
 **Note:** Many of the the children/sub-sectional fields were skipped during the first round of research. See [rippled-example.cfg file on Github](https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg).
 
@@ -312,10 +325,10 @@ port_rpc_admin_local
 port_peer
 port_ws_admin_local
 
-<!-- #port_ws_public
+#port_ws_public
 #ssl_key = /etc/ssl/private/server.key
 #ssl_cert = /etc/ssl/certs/server.crt
- -->
+
 [port_rpc_admin_local]
 port = 5005
 ip = 127.0.0.1
@@ -333,11 +346,12 @@ ip = 127.0.0.1
 admin = 127.0.0.1
 protocol = ws
 
-<!-- #[port_ws_public]
+#[port_ws_public]
 #port = 5005
 #ip = 127.0.0.1
 #protocol = wss
- -->
+
+
 [node_size]
 medium
 
@@ -348,12 +362,13 @@ type=RocksDB
 path=/var/lib/rippled/db/rocksdb
 open_files=2000
 
-<!-- BEGIN UNDOCUMENTED SETTINGS! -->
+BEGIN UNDOCUMENTED SETTINGS!
 filter_bits=12
 cache_mb=256
 file_size_mb=8
 file_size_mult=2
-<!-- END UNDOCUMENTED SETTINGS! -->
+END UNDOCUMENTED SETTINGS!
+
 ***TODO: What are these undocumented settings? This is the first time they appear.***
 ***TODO: What other settings are undocumented in the example config?***
 ***TODO: Make a PR against the example ripple.cfg to fill in those gaps***
@@ -368,7 +383,8 @@ advisory_delete=0
 /var/log/rippled/debug.log
 
 [sntp_servers]
-<!-- One of the following would be used -->
+
+One of the following would be used
 time.windows.com
 time.apple.com
 time.nist.gov
@@ -376,17 +392,19 @@ pool.ntp.org
 ***TODO: Verify that only one should be given. Can multiple be given, as backups?***
 
 [ips]
-<!-- Where to find some other servers speaking the Ripple protocol. -->
+# Where to find some other servers speaking the Ripple protocol.
 r.ripple.com 51235
 
 [validators_file]
-<!-- File containing trusted validator keys or validator list publishers. -->
+File containing trusted validator keys or validator list publishers.
 validators.txt
 
 [rpc_startup]
-<!-- Turn down default logging to save disk space in the long run. Valid values here are trace, debug, info, warning, error, and fatal -->
+Turn down default logging to save disk space in the long run. Valid values here are trace, debug, info, warning, error, and fatal
 { "command": "log_level", "severity": "warning" }
 
 [ssl_verify]
-<!-- If ssl_verify is 1, certificates will be validated. For self-signed certificates for development or internal use, set to ssl_verify to 0. -->
+If ssl_verify is 1, certificates will be validated. For self-signed certificates for development or internal use, set to ssl_verify to 0.
 1
+
+-->
