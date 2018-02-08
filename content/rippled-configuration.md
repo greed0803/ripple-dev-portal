@@ -13,6 +13,8 @@
 
 **Configuration Recommendations**
 
+_Description here_
+
 ***TODO: We can recommend that users pick one of several starting places for configuration and call out those features here, such as using NuDB if history sharding. Additionally, we may want to offer off-the-shelf configs for each of the respective persona/server-types, which may be modified as required.***
 
 - Stock server
@@ -21,6 +23,8 @@
 - Validator
 
 **Configuration Reference Tables**
+
+_Description here_
 
 - Purpose, syntax, notation - crosslink to [rippled.cfg example config file](https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg)
 - Server
@@ -33,6 +37,12 @@
 - Example Settings
 
 **Troubleshooting Common `rippled` Configuration Problems**
+
+_Description here_
+
+- Common Problem A and Solution
+- Common Problem B and Solution
+- Common Problem C and Solution
 
 ***TODO: It may be worth adding this troubleshooting section. Thoughts?***
 
@@ -55,7 +65,9 @@ TABLE: Configuration section reference
 
 ## Server
 
-### Server's Port List
+_Description here_
+
+### Server's Port List Example
 
 _Description here_
 
@@ -67,7 +79,7 @@ _Description here_
 
 **Tip:** To avoid a conflict with port names and future configuration sections, Ripple recommends prepending "port_" to the port name. This prefix is not required.
 
-### Port Settings List
+### Port Settings List Example
 
 _Description here_
 
