@@ -1,33 +1,55 @@
 # Configuring `rippled`
 
-## Minimum Requirements from Install
+***TODO: This doc proposes some ideas for a topic that documents `rippled` configuration. That topic will be this same page, once it is cleaned up, improved and complete. At this early stage, it is in DRAFT form, and open to community and developer feedback. Comments about the document are added in these bold-italic TODO callouts. All of the document is open to change. _TODO's will not be part of the published document_.***
 
-### Hardware
-### Source
+## Sample TOC
 
-### ***TODO: Whatever else is in the install docs***
+**Considerations for Configuring `rippled`**
 
-# Types of `rippled` Servers
-## Stock/standard Ledger Store with or w/out history shards
-## Full Ledger Store history
-## Validator
+- Determine your business goals
+- Types of server -- crosslink
+- Hardware requirements -- crosslink
+- Complete installation -- crosslink
 
-# Configuration Reference
-## Purpose, syntax, notation
-## Server
-## Peer Protocol
-## Ripple Protocol
-## HTTPS Client
-## Database
-## Diagnostics
-## Voting
-## Example Settings
-## Types of Server Configuration
+**Configuration Recommendations**
+
+***TODO: We can recommend that users pick one of several starting places for configuration and call out those features here, such as using NuDB if history sharding. Additionally, we may want to offer off-the-shelf configs for each of the respective persona/server-types, which may be modified as required.***
+
+- Stock server
+- Stock server with history sharding
+- Full history server
+- Validator
+
+**Configuration Reference Tables**
+
+- Purpose, syntax, notation - crosslink to [rippled.cfg example config file](https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg)
+- Server
+- Peer Protocol
+- Ripple Protocol
+- HTTPS Client
+- Database
+- Diagnostics
+- Voting
+- Example Settings
+
+
+
+
+***TODO: One model for presenting the sections of the Configuration Reference Tables follows, where any peculiarities or special notes could be called out in the section description.***
+
+```
+Section Heading (such as Peer Protocol)
+  Brief description, and any notes
+
+TABLE: In-the-wild configuration example
+
+TABLE: Configuration section reference
+
+```
+
+***TODO: What follows below is a truncated example of how the above suggested format for Configuration Reference Tables could be applied to the documentation for Server configuration.***
 
 # Reference Tables and Examples
-
-Each section of the configuration (Server, Peer Protocol, Ripple Protocol) should include a page section with a reasonable set of labeled examples that correlate to the reference table that fully describes each field. Any peculiarities or special notes can also be called out in the section.
-
 
 ## Server
 
@@ -35,7 +57,7 @@ Each section of the configuration (Server, Peer Protocol, Ripple Protocol) shoul
 
 | Example                                                                                                 | Section or Sub-section                                     |
 |:--------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------|
-| ``` [server]``` <br> ```port_public``` <br>```port_private```  <br> ```port=80``` <br> ```protocol = http ```| Server's port list<br>Listening port name<br>Listening port name<br>Listening port default  |
+| ``` [server]``` <br> ```port_public``` <br>```port_private```  <br> ```port=80``` <br> ```protocol = http ```| Server's port list<br>Listening port name<br>Listening port name<br>Listening port default <br> Protocol |
 
 **Tip:** To avoid a conflict with port names and future configuration sections, we recommend prepending "port_" to the port name. This prefix is not required, but suggested.
 
@@ -61,7 +83,7 @@ Each section of the configuration (Server, Peer Protocol, Ripple Protocol) shoul
 # Author's Research Notes from example-rippled.cfg file
 <!-- (JBH) -->
 
-**Note:** Many of the the children/sub-sectional fields were skipped during the first round of research. See [](https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg).
+**Note:** Many of the the children/sub-sectional fields were skipped during the first round of research. See [rippled-example.cfg file on Github](https://github.com/ripple/rippled/blob/develop/doc/rippled-example.cfg).
 
 ## Configuration
 
