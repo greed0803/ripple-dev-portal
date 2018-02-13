@@ -55,7 +55,10 @@ There are several properties that define a good validator. The more of these pro
 * **Identified**. It should be clear who runs the validator. Ideally, a list of trusted validators should include validators operated by different owners in multiple legal jurisdictions and geographic areas, to reduce the chance that any localized events could interfere with the validator's impartial operation.
     * Setting up [Domain Verification](#domain-verification) is a good start.
 
-At present, Ripple (the company) cannot recommend any validators aside from the 5 core validators run by Ripple: these validators are included in the default `rippled` configuration. However, we are collecting data on other validators and building tools to report on their performance. For metrics on validators, see [validators.ripple.com](https://validators.ripple.com).
+At present, Ripple (the company) cannot recommend any validators aside from those in the default validator list. However, we are collecting data on other validators and building tools to report on their performance. For metrics on validators, see [validators.ripple.com](https://validators.ripple.com).
+
+-At present, Ripple (the company) cannot recommend any validators aside from the 5 core validators run by Ripple: these validators are included in the default `rippled` configuration. However, we are collecting data on other validators and building tools to report on their performance. For metrics on validators, see [validators.ripple.com](https://validators.ripple.com).
++At present, Ripple (the company) cannot recommend any validators aside from those in the default validator list. However, we are collecting data on other validators and building tools to report on their performance. For metrics on validators, see [validators.ripple.com](https://validators.ripple.com).
 
 
 # Installing rippled
@@ -75,11 +78,21 @@ A `rippled` server should run comfortably on commodity hardware, to make it inex
 - Disk: Minimum 50GB SSD recommended (500+ IOPS, more is better) for the database partition
 - RAM: 4+GB
 
-Amazon EC2's m3.large VM size may be appropriate depending on your workload.
+Amazon EC2's `m3.large` VM size may be appropriate depending on your workload. A fast network connection is preferable. Any increase in a server's client-handling load will increase resources needs.
 
-***TODO: client-handling load affects resource needs***
+For best performance, Ripple recommends running `rippled` on bare metal.
 
-Naturally, a fast network connection is preferable.
+For enterprise use, Ripple recommends:
+
+- Operating System: Ubuntu 16.04+
+- CPU: 4+ cores, preferably x86_64 Xeon architecture
+- Disk: SSD
+- RAM: 32 GB RAM
+
+Solid state disk
+Ubuntu 16.04+
+
+For Amazon EC2 performance, Ripple recommends using ephemeral SSDs. 2000 IOPS is insufficient for a Validator.
 
 
 ## Installation on CentOS/Red Hat with yum
