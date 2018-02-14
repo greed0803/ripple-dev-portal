@@ -57,9 +57,6 @@ There are several properties that define a good validator. The more of these pro
 
 At present, Ripple (the company) cannot recommend any validators aside from those in the default validator list. However, we are collecting data on other validators and building tools to report on their performance. For metrics on validators, see [validators.ripple.com](https://validators.ripple.com).
 
--At present, Ripple (the company) cannot recommend any validators aside from the 5 core validators run by Ripple: these validators are included in the default `rippled` configuration. However, we are collecting data on other validators and building tools to report on their performance. For metrics on validators, see [validators.ripple.com](https://validators.ripple.com).
-+At present, Ripple (the company) cannot recommend any validators aside from those in the default validator list. However, we are collecting data on other validators and building tools to report on their performance. For metrics on validators, see [validators.ripple.com](https://validators.ripple.com).
-
 
 # Installing rippled
 
@@ -78,21 +75,9 @@ A `rippled` server should run comfortably on commodity hardware, to make it inex
 - Disk: Minimum 50GB SSD recommended (500+ IOPS, more is better) for the database partition
 - RAM: 4+GB
 
-Amazon EC2's `m3.large` VM size may be appropriate depending on your workload. A fast network connection is preferable. Any increase in a server's client-handling load will increase resources needs.
+Amazon EC2's m3.large VM size may be appropriate depending on your workload. (Validating servers need more resources.)
 
-For best performance, Ripple recommends running `rippled` on bare metal.
-
-For enterprise use, Ripple recommends:
-
-- Operating System: Ubuntu 16.04+
-- CPU: 4+ cores, preferably x86_64 Xeon architecture
-- Disk: SSD
-- RAM: 32 GB RAM
-
-Solid state disk
-Ubuntu 16.04+
-
-For Amazon EC2 performance, Ripple recommends using ephemeral SSDs. 2000 IOPS is insufficient for a Validator.
+Naturally, a fast network connection is preferable.
 
 
 ## Installation on CentOS/Red Hat with yum
